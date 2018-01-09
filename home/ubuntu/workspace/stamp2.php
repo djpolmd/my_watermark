@@ -15,7 +15,7 @@ imagestring($stamp, 3, 30, 0,  date("Y"), 0x0000FF);
         $white = imagecolorallocate($stamp, 255, 255, 255); 
         imagefill($stamp,0,0,$white);
         
-        //imagecolortransparent($stamp, $background);
+        imagecolortransparent($stamp, $white);
 
         // turning off alpha blending (to ensure alpha channel information is preserved, rather than removed (blending with the rest of the image in the form of black))
         imagealphablending($stamp, false);
