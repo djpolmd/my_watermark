@@ -7,21 +7,22 @@ $im = imagecreatefromjpeg('1.jpg');
 
 // Сначала создаем наше изображение штампа вручную с помощью GD
 $stamp = imagecreatefrompng("logo.png");
-imagestring($stamp, 3, 65, 0, '(C)Copyright', 0x0000FF);
-imagestring($stamp, 3, 30, 0,  date("Y"), 0x0000FF);
+imagestring($stamp, 3, 105, 0, '(C)Copyright', 0x00AAFF);
+imagestring($stamp, 3, 75, 0,  date("Y"), 0x00AAFF);
 
         $background = imagecolorallocate($stamp, 0, 0, 0);
+
         // removing the black from the placeholder
-        $white = imagecolorallocate($stamp, 255, 255, 255); 
-        imagefill($stamp,0,0,$white);
-        
-        imagecolortransparent($stamp, $white);
+        //$white = imagecolorallocate($stamp, 255, 255, 255); 
+
+        imagefill($stamp,0,0,$background);
+        imagecolortransparent($stamp, $background);
 
         // turning off alpha blending (to ensure alpha channel information is preserved, rather than removed (blending with the rest of the image in the form of black))
-        imagealphablending($stamp, false);
+ //       imagealphablending($stamp, false);
 
         // turning on alpha channel information saving (to ensure the full range of transparency is preserved)
-        imagesavealpha($stamp, true);
+         imagesavealpha($stamp, true);
 
 // Установка полей для штампа и получение высоты/ширины штампа
 $marge_right = 20;
